@@ -1,0 +1,12 @@
+{
+	"isSuccess": true,
+	"message": "成功",
+	"user": {
+		"name": "smoky",
+		"sex": "女",
+		"birthday": "2013-09-09",
+		"area": "山东省,泰安市,新泰市",
+		"street": "果都镇",
+		"phone": "17076467718"
+	}
+}

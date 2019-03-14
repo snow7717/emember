@@ -1,0 +1,52 @@
+.card{
+	background-color: $mainColor;
+	border-radius: 5px;
+	.cell,.info{
+		background: none;
+		color: white;
+	}
+	.info dd{
+		-webkit-margin-start: 0px;
+		font-weight: bold;
+	}
+	.code-image{
+	  max-width: 80%;
+  }
+}
+.tabbar-mine{
+	background-color: #f6f8fa;
+	margin-top: 10px;
+	border-radius: 5px;
+	dt{
+		font-size: 24px;
+	}
+	dd{
+		-webkit-margin-start: 0px;
+		font-size: 12px;
+	}
+}
+.color-f54100{
+	color: #f54100;
+}
+.color-41f500{
+	color: #41f500;
+}
+.color-0043f5{
+	color: #0043f5;
+}
+.color-c45590{
+	color: #c45590; 
+}
+.w-33{
+	width: 33%;
+}
+.w-34{
+	width: 34%;
+}
+.w-25{
+	width: 25%;
+}
+.logout{
+	position: fixed;
+	bottom: 10px;
+}
