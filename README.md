@@ -1,10 +1,6 @@
-# emember
-
-> 电子会员系统
+# 云时空电子会员系统
 
 ## Build Setup
-
-``` bash
 # install dependencies
 npm install
 
