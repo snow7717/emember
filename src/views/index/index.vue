@@ -27,7 +27,7 @@
 			  <dt class='color-41f500 iconfont'>&#xe646;</dt>
 				<dd>消费明细</dd>
 			</dl>
-			<dl class='w-25 f-fl f-csp'>
+			<dl class='w-25 f-fl f-csp' v-on:click='go("/integral")'>
 			  <dt class='color-0043f5 iconfont'>&#xe652;</dt>
 				<dd>积分明细</dd>
 			</dl>

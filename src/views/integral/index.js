@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export default {
-	name: 'consumpion',
+	name: 'integral',
 	data() {
 		return {
 			consumptions: [],

@@ -7,6 +7,7 @@ import UserPhone from '@/views/user/phone/step0/index.vue'
 import UserPhone1 from '@/views/user/phone/step1/index.vue'
 import UserAddress from '@/views/user/address/index.vue'
 import Consumption from '@/views/consumption/index.vue'
+import Integral from '@/views/integral/index.vue'
 
 Vue.use(Router)
 
@@ -47,5 +48,10 @@ export default new Router({
       name: 'consumption',
       component: Consumption
     },
+		{
+			path: '/integral',
+			name: 'integral',
+			component: Integral
+		}
   ]
 })

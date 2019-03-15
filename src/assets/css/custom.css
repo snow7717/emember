@@ -1,3 +1,6 @@
 .cell .mint-cell-value{
 	color: white;
 }
+.range-end .mint-cell-wrapper{
+	padding-right: 5px;
+}
