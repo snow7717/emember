@@ -31,7 +31,7 @@
 			  <dt class='color-0043f5 iconfont'>&#xe652;</dt>
 				<dd>积分明细</dd>
 			</dl>
-			<dl class='w-25 f-fl f-csp'>
+			<dl class='w-25 f-fl f-csp' v-on:click='go("/shop")'>
 			  <dt class='color-c45590 iconfont'>&#xe635;</dt>
 				<dd>查看门店</dd>
 			</dl>

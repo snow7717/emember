@@ -4,3 +4,14 @@
 .range-end .mint-cell-wrapper{
 	padding-right: 5px;
 }
+.BMap_cpyCtrl {
+  display: none;
+}
+.anchorBL {
+  display: none;
+}
+
+.map-info-window .mint-cell-wrapper{
+	padding: 0;
+	background-size: 120% 0px;
+}

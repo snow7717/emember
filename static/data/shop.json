@@ -1,0 +1,54 @@
+{
+	"isSuccess": true,
+	"message": "成功",
+	"shop": [
+		{
+			"lat": "36.6575283084", 
+			"lng": "117.0038431770",
+			"name": "一号店",
+			"address": "一号店地址",
+			"business": "7:00 - 22:00",
+			"phone": "7580027",
+			"type": "非医保",
+			"show": false,
+			"distance": "0",
+			"active": false
+		},		
+		{
+			"lat": "36.6605283084", 
+			"lng": "117.0038431770",
+			"name": "二号店",
+			"address": "二号店地址",
+			"business": "7:00 - 22:00",
+			"phone": "7580027",
+			"type": "非医保",
+			"show": false,
+			"distance": "0",
+			"active": false
+		},		
+		{
+			"lat": "36.6635283084", 
+			"lng": "117.0038431770",
+			"name": "三号店",
+			"address": "三号店地址",
+			"business": "7:00 - 22:00",
+			"phone": "7580027",
+			"type": "非医保",
+			"show": false,
+			"distance": "0",
+			"active": false
+		},		
+		{
+			"lat": "36.6665283084", 
+			"lng": "117.0038431770",
+			"name": "四号店",
+			"address": "四号店地址",
+			"business": "7:00 - 22:00",
+			"phone": "7580027",
+			"type": "非医保",
+			"show": false,
+			"distance": "0",
+			"active": false
+		}	
+	]
+}
