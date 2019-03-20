@@ -25,6 +25,9 @@ export default {
 	},
 	watch: {},
 	methods: {
+		back() {
+			this.$router.back()
+		},
 		/** 发送手机验证码 **/
 		sendCode() {
 			this.countdown = 60

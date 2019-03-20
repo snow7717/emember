@@ -1,3 +1,14 @@
+body{
+	padding-top: 40px;
+}
+a{
+	text-decoration: none;
+}
+.header{
+	margin-bottom: 10px;
+	background-color: #f4f4f4;
+	color: #666;
+}
 .cell .mint-cell-value{
 	color: white;
 }
@@ -14,4 +25,18 @@
 .map-info-window .mint-cell-wrapper{
 	padding: 0;
 	background-size: 120% 0px;
+}
+
+.full {
+  background-color: #F56C6C;
+}
+.not-full {
+	border: white solid 1px;
+}
+.full, .not-full{
+	border-radius: 100%;
+}
+.wh_content_item .wh_item_date.wh_isToday{
+	background: none;
+	color: yellow;
 }

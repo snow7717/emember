@@ -1,0 +1,46 @@
+{
+	"isSuccess": true,
+	"message": "成功",
+	"doctors": [
+		{
+			"name": "jenny",
+			"headPic": "/static/img/headpic.jpg",
+			"star": 3,
+			"level": "国家级老中医 博士生导师",
+			"shop": "经四路店",
+			"spend": 100,
+			"goodAts": ["失眠","三高","发烧","咳嗽"],
+			"count": 22
+		},
+		{
+			"name": "jack",
+			"headPic": "/static/img/headpic.jpg",
+			"star": 3,
+			"level": "国家级老中医 博士生导师",
+			"shop": "经五路店",
+			"spend": 100,
+			"goodAts": ["失眠","三高","发烧","咳嗽"],
+			"count": 22
+		},
+		{
+			"name": "tony",
+			"headPic": "/static/img/headpic.jpg",
+			"star": 3,
+			"level": "国家级老中医 博士生导师",
+			"shop": "华山路店",
+			"spend": 100,
+			"goodAts": ["失眠","三高","发烧","咳嗽"],
+			"count": 22
+		},
+		{
+			"name": "scote",
+			"headPic": "/static/img/headpic.jpg",
+			"star": 3,
+			"level": "国家级老中医 博士生导师",
+			"shop": "南四环店",
+			"spend": 100,
+			"goodAts": ["失眠","三高","发烧","咳嗽"],
+			"count": 22
+		}
+	]
+}

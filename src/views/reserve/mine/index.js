@@ -4,7 +4,7 @@ export default {
 	name: 'integral',
 	data() {
 		return {
-			consumptions: [],
+			reserves: [],
 			range: {
 				start: moment('2018-09-09').format('YYYY-MM-DD'),
 				end: moment(new Date()).format('YYYY-MM-DD')
@@ -37,8 +37,8 @@ export default {
 		},
 		/** 获取消费列表 **/
 		index(page) {
-			this.$http.get('/api/static/data/consumption.json',{params: {page: page, pageSize: this.page.pageSize, range: this.range}}).then((res) => {
-				this.consumptions = this.consumptions.concat(res.data.consumption)
+			this.$http.get('/api/static/data/reserve.json',{params: {page: page, pageSize: this.page.pageSize, range: this.range}}).then((res) => {
+				this.reserves = this.reserves.concat(res.data.reserve)
 				this.page.total = Math.ceil(res.data.total / this.page.pageSize)
 			})
 		},

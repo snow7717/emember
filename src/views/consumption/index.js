@@ -32,6 +32,9 @@ export default {
     })
   },
 	methods: {
+		back() {
+			this.$router.back()
+		},
 		/** 获取消费列表 **/
 		index(page) {
 			this.$http.get('/api/static/data/consumption.json',{params: {page: page, pageSize: this.page.pageSize, range: this.range}}).then((res) => {

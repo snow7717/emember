@@ -18,6 +18,9 @@ export default {
 		}
 	},
 	methods: {
+		back() {
+			this.$router.back()
+		},
 		/** 修改性别 **/
 		sexEdit(val){
 			this.$http.get('/api/static/data/user/name.json',{params: {sex: val}}).then((res) => {

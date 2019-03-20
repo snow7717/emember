@@ -13,6 +13,9 @@ export default {
 	components: {
 	},
 	methods: {
+		back() {
+			this.$router.back()
+		},
 		/**修改用户名**/
 		edit(){
 			this.$http.get('/api/static/data/user/name.json',{params: {name: this.user.name}}).then((res) => {

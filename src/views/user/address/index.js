@@ -70,7 +70,7 @@ export default {
 	},
   methods: {
 		back() {
-			this.$router.go(-1)
+			this.$router.back()
 		},
 		/** 设置默认选中值 **/
 		init() {
@@ -107,7 +107,6 @@ export default {
 			this.slotstree[0].values = carea.childs.map((res) => {
 				return res.name
 			})
-			console.log(this.user.street)
 			this.slotstree[0].defaultIndex = carea.childs.findIndex((value,index,arr) => {
 				return value.name == this.user.street
 			})

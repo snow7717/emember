@@ -1,5 +1,8 @@
 <template>
   <div>
+	  <mt-header title="消费明细" class='header' v-bind:fixed='true'>
+			<mt-button icon="back" slot='left' v-on:click='back'></mt-button>
+		</mt-header>
 	  <div class='range f-cb'>
 		  <section class='range-start' v-on:click='openPicker("pickerStart")'>
 	      <mt-cell title="日期筛选" v-bind:value="range.start" ></mt-cell>

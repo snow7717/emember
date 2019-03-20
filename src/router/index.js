@@ -9,6 +9,9 @@ import UserAddress from '@/views/user/address/index.vue'
 import Consumption from '@/views/consumption/index.vue'
 import Integral from '@/views/integral/index.vue'
 import Shop from '@/views/shop/index.vue'
+import Reserve from '@/views/reserve/index/index.vue'
+import ReserveMine from '@/views/reserve/mine/index.vue'
+import ReserveShow from '@/views/reserve/show/index.vue'
 
 Vue.use(Router)
 
@@ -58,6 +61,21 @@ export default new Router({
 			path: '/shop',
 			name: 'shop',
 			component: Shop
-		}
+		},
+		{
+			path: '/reserve',
+			name: 'reserve',
+			component: Reserve
+		},
+		{
+			path: '/reserve/mine',
+			name: 'reserveMine',
+			component: ReserveMine
+		},
+		{
+			path: '/reserve/show',
+			name: 'reserveShow',
+			component: ReserveShow
+		},
   ]
 })

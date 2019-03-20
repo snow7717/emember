@@ -1,0 +1,63 @@
+.banner{
+	height: 180px;
+}
+.notice {
+  overflow: hidden;
+  height: 30px;
+	background-color: $mainColor;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 40px;
+	position: relative;
+	.close{
+		width: 40px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		background: none;
+		color: white;
+		border: none;
+		font-size: 20px;
+	}
+}
+.search{
+	height: auto;
+	background: none;
+}
+.doctor-wrapper{
+	display: flex;
+	margin-top: 10px;
+	.headpic{
+		width: 100px;
+		img{
+			width: 100%;
+		}
+	}
+	.doctor-info{
+		flex: 1;
+		padding-left: 10px;
+		
+		.doctor-info-header{
+			line-height: 33px;
+			.doctor-name{
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+			.doctor-star{
+				margin-top: 3px;
+				margin-bottom: 0;
+				-webkit-padding-start: 20px;
+			}
+		}
+		p,dl{
+			-webkit-margin-before: 0em;
+      -webkit-margin-after: 0em;
+		}
+		dd{
+			-webkit-margin-start: 0px;
+			margin-left: 10px;
+		}
+	}
+}

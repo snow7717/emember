@@ -1,5 +1,8 @@
 <template>
   <div>
+	  <mt-header title="个人资料" class='header' v-bind:fixed='true'>
+		  <mt-button icon="back" slot='left' v-on:click='back'></mt-button>
+		</mt-header>
 	  <mt-cell title="姓名" to="/user/name" is-link v-bind:value="user.name">
 		</mt-cell>
 		<section v-on:click='sexVisible = true'>

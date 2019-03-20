@@ -1,0 +1,47 @@
+.doctor-wrapper{
+	display: flex;
+	margin-top: 10px;
+	.headpic{
+		width: 100px;
+		img{
+			width: 100%;
+		}
+	}
+	.doctor-info{
+		flex: 1;
+		padding-left: 10px;
+		
+		.doctor-info-header{
+			line-height: 20px;
+			.doctor-name{
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+			.doctor-star{
+				margin-top: 3px;
+				margin-bottom: 0;
+				-webkit-padding-start: 20px;
+			}
+		}
+		p,dl{
+			-webkit-margin-before: 0em;
+      -webkit-margin-after: 0em;
+		}
+		dd{
+			-webkit-margin-start: 0px;
+			margin-left: 10px;
+		}
+	}
+}
+.ml-20{
+	margin-left: 20px;
+}
+.mt-10{
+	margin-top: 10px;
+}
+.wh_container{
+	max-width: 100%;
+}
+.w-100{
+	width: 100%;
+}

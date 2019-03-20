@@ -1,5 +1,6 @@
 <template>
   <div class='main'>
+	  <mt-header title="电子会员" class='header' v-bind:fixed='true'></mt-header>
 	  <div class='card f-cb'>
 		  <mt-cell v-bind:title="member.id" v-bind:value="member.name" class='cell'></mt-cell>
 			<section class='f-tac'>

@@ -1,7 +1,7 @@
 <template>
   <div>
-	  <mt-header title="积分明细" class='header' v-bind:fixed='true'>
-			<mt-button icon="back" slot='left' v-on:click='back'></mt-button>
+	  <mt-header title="我的预约" class='header' v-bind:fixed='true'>
+		  <mt-button icon="back" slot='left' v-on:click='back'></mt-button>
 		</mt-header>
 	  <div class='range f-cb'>
 		  <section class='range-start' v-on:click='openPicker("pickerStart")'>
@@ -13,7 +13,7 @@
 		</div>
 		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
-				<mt-cell v-for='(item,index) in consumptions' v-bind:key='index' v-bind:title="'单号:' + item.id" v-bind:label="item.time" v-bind:value='"积分/金额：" + "90 / " + "¥" + item.spend'></mt-cell>
+				<mt-cell v-for='(item,index) in reserves' v-bind:key='index' v-bind:title="item.shop + ' / ' + item.doctor" v-bind:label="item.time" v-bind:value='"状态/费用：" + item.status + "/" + "¥" + item.spend'></mt-cell>
 			</mt-loadmore>
 		</div>
 		<mt-datetime-picker ref="pickerStart" type="date" v-bind:value='range.start' v-bind:endDate='new Date(range.end)' v-on:confirm='dateStartFilter'></mt-datetime-picker>

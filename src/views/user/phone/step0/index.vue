@@ -1,5 +1,8 @@
 <template>
   <div>
+	  <mt-header title="手机号管理" class='header' v-bind:fixed='true'>
+		  <mt-button icon="back" slot='left' v-on:click='back'></mt-button>
+		</mt-header>
 		<mt-cell title="当前绑定号码" v-bind:value="user.phone"></mt-cell>
 		<mt-field placeholder="手机验证码" v-model="ecode">
 		  <mt-button type="primary" size='small' v-on:click='sendCode' v-bind:disabled='ableSend == false'>{{btntext}}</mt-button>
