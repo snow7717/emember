@@ -1,22 +1,24 @@
+import { Toast } from 'mint-ui'
+
 export default {
 	name: 'index',
 	data() {
 		return {
 			member: {
-				id: '158109640',
-				name: '漱玉平民大药房',
-				score: {
-					total: 1024,
-					able: 24
-				},
-				level: '普通',
-				code: '/static/img/code.gif'
+				cardNo: '',
+				comName: '',
+				total: '',
+				useful: '',
+				level: '',
+				barcodeImg: ''
 			},
 			selected: ''
 		}
 	},
 	created() {
+		this.$store.commit('userId',this.$route.params.openid)
 		this.$store.dispatch('userShow')
+		this.index()
 	},
 	computed: {
 		user() {
@@ -27,6 +29,17 @@ export default {
 		/** 页面跳转 **/
 		go(url) {
 			this.$router.push(url)
+		},
+		index() {
+			this.$http.post('/api/member/load',{openid: this.$store.state.user.openid}).then((res) => {
+				if(res.data.retcode == '1'){
+				  this.member = res.data.data
+				}else{
+					Toast({
+						message: res.data.retmsg
+					})
+				}
+			})
 		}
 	},
 	components: {}

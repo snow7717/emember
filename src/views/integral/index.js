@@ -4,7 +4,7 @@ export default {
 	name: 'integral',
 	data() {
 		return {
-			consumptions: [],
+			integrals: [],
 			range: {
 				start: moment('2018-09-09').format('YYYY-MM-DD'),
 				end: moment(new Date()).format('YYYY-MM-DD')
@@ -23,6 +23,9 @@ export default {
 	computed: {
 		isAllLoaded() {
 			return this.page.current == this.page.total ? true : false
+		},
+		user() {
+			return this.$store.state.user
 		}
 	},
 	mounted() {
@@ -37,8 +40,8 @@ export default {
 		},
 		/** 获取消费列表 **/
 		index(page) {
-			this.$http.get('/api/static/data/consumption.json',{params: {page: page, pageSize: this.page.pageSize, range: this.range}}).then((res) => {
-				this.consumptions = this.consumptions.concat(res.data.consumption)
+			this.$http.post('/api/member/consumeRecord',{pageNo: page, pageSize: this.page.pageSize, startDate: this.range.start, endDate: this.range.end,openid: this.user.openid}).then((res) => {
+				this.integrals = this.integrals.concat(res.data.rows)
 				this.page.total = Math.ceil(res.data.total / this.page.pageSize)
 			})
 		},
@@ -48,15 +51,18 @@ export default {
     },
 		dateStartFilter(val){
 			this.range.start = moment(val).format('YYYY-MM-DD')
-			this.index()
+			this.integrals = []
+			this.index(1)
 		},
 		dateEndFilter(val){
 			this.range.end = moment(val).format('YYYY-MM-DD')
-			this.index()
+			this.integrals = []
+			this.index(1)
 		},
 		loadTop() {
 			//重置分页为1
 			this.page.current = 1
+			this.integrals = []
 			this.index(this.page.current)
       this.$refs.loadmore.onTopLoaded()
     },

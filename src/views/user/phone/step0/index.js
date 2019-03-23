@@ -4,7 +4,6 @@ export default {
 	data() {
 		return {
 			ecode: '',
-			vcode: '',
 			countdown: 0,
 		}
 	},
@@ -31,12 +30,12 @@ export default {
 		/** 发送手机验证码 **/
 		sendCode() {
 			this.countdown = 60
-			this.$http.get('/api/static/data/user/name.json',{params: {phone: this.user.phone}}).then((res) => {
+			this.$http.post('/api/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
+				console.log(res)
 				Toast({
-					message: res.data.message
+					message: res.data.retmsg
 				})
-				if(res.data.isSuccess){
-					this.vcode = res.data.vcode
+				if(res.data.retcode == '1'){
 					let count = setInterval(() => {
 						if(this.countdown > 0){
 							this.countdown--
@@ -51,13 +50,16 @@ export default {
 		},
 		/** 跳转进入下一页面 **/
 		nexter(){
-			if(this.ecode == this.vcode){
-				this.$router.push('/user/phone1')
-			}else{
-				Toast({
-					message: '验证码输入不正确，请重新输入'
-				})
-			}
+			this.$http.post('/api/member/unbind',{openid: this.user.openid, passcode: this.ecode}).then((res) => {
+				if(res.data.retcode == '0'){
+					Toast({
+						message: res.data.retmsg
+					})
+				}else if(res.data.retcode == '1'){
+					this.$store.dispatch('userShow')
+					this.$router.push('/user/phone1')
+				}
+			})
 		}
 	}
 }

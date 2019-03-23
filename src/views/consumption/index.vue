@@ -13,7 +13,7 @@
 		</div>
 		<div ref="wrapper" v-bind:style="{height: contentH + 'px'}" style="overflow: scroll;">
 			<mt-loadmore v-bind:top-method="loadTop" v-bind:bottom-method="loadBottom" ref="loadmore" v-bind:bottom-all-loaded="isAllLoaded" v-bind:auto-fill='false'>
-				<mt-cell v-for='(item,index) in consumptions' v-bind:key='index' v-bind:title="'单号:' + item.id" v-bind:label="item.time" v-bind:value='"¥" + item.spend'></mt-cell>
+				<mt-cell v-for='(item,index) in consumptions' v-bind:key='index' v-bind:title="'单号: ' + item.orderid" v-bind:label="item.createTime" v-bind:value='"¥" + item.amount'></mt-cell>
 			</mt-loadmore>
 		</div>
 		<mt-datetime-picker ref="pickerStart" type="date" v-bind:value='range.start' v-bind:endDate='new Date(range.end)' v-on:confirm='dateStartFilter'></mt-datetime-picker>

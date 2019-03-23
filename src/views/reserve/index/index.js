@@ -14,16 +14,23 @@ export default {
         direction: 1,
 				singleHeight: 30,
       },
+			shops: [],
+			banners: [],
 			noticeShow: true,
-			notices: [],
 			searchName: '',
-			address: '0',
-			doctors: []
+			doctors: [],
+			shopVisible: false
 		}
 	},
 	created() {
-		this.noticeIndex()
+		this.bannerIndex()
+		this.shopIndex()
 		this.doctorIndex()
+	},
+	computed: {
+		user() {
+			return this.$store.state.user
+		}
 	},
 	methods: {
 		back() {
@@ -32,14 +39,21 @@ export default {
 		go(url){
 			this.$router.push(url)
 		},
-		noticeIndex() {
-			this.$http.get('/static/data/notice.json').then((res) => {
-				this.notices = res.data.notices
+		bannerIndex() {
+			this.$http.post('/api/regist/activityPicture',{openid: this.user.openid}).then((res) => {
+				this.banners = res.data.data
+			})
+		},
+		shopIndex() {
+			this.$http.post('/api/regist/shopSearch',{openid: this.user.openid}).then((res) => {
+				for(let item of res.data.data){
+					this.shops.push(item.name)
+				}
 			})
 		},
 		doctorIndex() {
-			this.$http.get('/static/data/doctor.json').then((res) => {
-				this.doctors = res.data.doctors
+			this.$http.post('/api/regist/doctorList',{name: '', openid: this.user.openid, shop: parseInt(this.$route.params.id)}).then((res) => {
+				this.doctors = res.data.data
 			})
 		}
 	},

@@ -3,9 +3,7 @@ export default {
 	name: 'userPhone1',
 	data() {
 		return {
-			phone: '',
 			ecode: '',
-			vcode: '',
 			countdown: 0
 		}
 	},
@@ -16,7 +14,7 @@ export default {
 			return this.$store.state.user
 		},
 		phoneVerify() {
-			return /^1[34578]\d{9}$/.test(this.phone) ? true : false
+			return /^1[34578]\d{9}$/.test(this.user.phone) ? true : false
 		},
 		btntext() {
 			return this.countdown == 0 ? '获取验证码' : `${this.countdown}s后重新发送`
@@ -38,12 +36,11 @@ export default {
 		/** 发送手机验证码 **/
 		sendCode() {
 			this.countdown = 60
-			this.$http.get('/api/static/data/user/name.json',{params: {phone: this.user.phone}}).then((res) => {
+			this.$http.post('/api/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
 				Toast({
-					message: res.data.message
+					message: res.data.retmsg
 				})
-				if(res.data.isSuccess){
-					this.vcode = res.data.vcode
+				if(res.data.retcode == '1'){
 					let count = setInterval(() => {
 						if(this.countdown > 0){
 							this.countdown--
@@ -58,24 +55,17 @@ export default {
 		},
 		/** 更新手机号 **/
 		update() {
-			if(this.ecode == this.vcode){
-				this.$http.get('/api/static/data/user/name.json',{params: {phone: this.user.phone}}).then((res) => {
-					Toast({
-						message: res.data.message,
-						duration: 2000
-					})
-					if(res.data.isSuccess){
-						this.$store.dispatch('userShow')
-						let t = setTimeout(() => {
-							this.$router.push('/user')
-						},2000)
-					}
-				})
-			}else{
+			this.$http.post('/api/bindPhone',{phone: this.user.phone, passcode: this.ecode, openid: this.user.openid}).then((res) => {
 				Toast({
-					message: '手机验证码输入不正确，请重新输入'
+					message: res.data.retmsg,
+					duration: 1000
 				})
-			}
+				if(res.data.retcode == '1'){
+					setTimeout(() => {
+						this.$router.push('/user')
+					},1500)
+				}
+			})
 		}
 	}
 }

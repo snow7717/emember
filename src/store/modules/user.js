@@ -4,6 +4,7 @@ import { Toast } from 'mint-ui'
 
 // initial state
 const state = {
+	openid: ''
 }
 
 // getters
@@ -12,13 +13,28 @@ const getters = {
 
 // actions
 const actions = {
-	userShow(context){
-		axios.get('/api/static/data/user/index.json').then((res) => {
-			if(res.data.isSuccess){
-				context.commit('userShow',res.data.user)
+	userShow(context) {
+		axios.post(`/api/member/info`,{openid: context.state.openid}).then((res) => {
+			console.log(res)
+			if(res.data.retcode == '1'){
+				context.commit('userShow',res.data.data)
 			}else{
 				Toast({
-					message: res.data.message
+					message: res.data.retmsg
+				})
+			}
+		})
+	},
+	userEdit(context) {
+		axios.post('/api/member/save',context.state).then((res) => {
+			if(res.data.retcode == '1'){
+				Toast({
+					message: '更新成功'
+				})
+				context.dispatch('userShow')
+			}else{
+				Toast({
+					message: '更新失败请稍后再试'
 				})
 			}
 		})
@@ -27,9 +43,12 @@ const actions = {
 
 // mutations
 const mutations = {
+	userId(state, openid){
+		state.openid = openid
+	},
 	userShow(state, user){
 		state.name = user.name
-		state.sex = user.sex
+		state.gender = user.gender
 		state.birthday = user.birthday
 		state.area = user.area
 		state.street = user.street

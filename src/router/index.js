@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Auther from '@/views/auth/index.vue'
 import Index from '@/views/index/index.vue'
 import User from '@/views/user/index/index.vue'
 import UserName from '@/views/user/name/index.vue'
@@ -17,8 +18,13 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+		{
+			path: '/auth/:comId/:appId/:pageId',
+      name: 'auth',
+      component: Auther
+		},
     {
-      path: '/',
+      path: '//:openid',
       name: 'index',
       component: Index
     },
@@ -58,12 +64,17 @@ export default new Router({
 			component: Integral
 		},
 		{
-			path: '/shop',
+			path: '/shop/:openid',
 			name: 'shop',
 			component: Shop
 		},
 		{
-			path: '/reserve',
+			path: '/reserve/show/:id',
+			name: 'reserveShow',
+			component: ReserveShow
+		},
+		{
+			path: '/reserve/:openid/:id',
 			name: 'reserve',
 			component: Reserve
 		},
@@ -72,10 +83,6 @@ export default new Router({
 			name: 'reserveMine',
 			component: ReserveMine
 		},
-		{
-			path: '/reserve/show',
-			name: 'reserveShow',
-			component: ReserveShow
-		},
+		
   ]
 })

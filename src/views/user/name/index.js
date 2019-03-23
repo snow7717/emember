@@ -3,6 +3,7 @@ export default {
 	name: 'userName',
 	data() {
 		return {
+			form: this.$store.state.user
 		}
 	},
 	computed: {
@@ -18,15 +19,7 @@ export default {
 		},
 		/**修改用户名**/
 		edit(){
-			this.$http.get('/api/static/data/user/name.json',{params: {name: this.user.name}}).then((res) => {
-				Toast({
-					message: res.data.message
-				})
-				this.$store.dispatch('userShow')
-				let t = setTimeout(() => {
-					this.$router.push('/user')
-				},2000)
-			})
+			this.$store.dispatch('userEdit')
 		}
 	}
 }

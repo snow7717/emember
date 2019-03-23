@@ -32,6 +32,11 @@ export default {
 	created() {
 		
 	},
+	computed: {
+		user() {
+			return this.$store.state.user
+		}
+	},
 	methods: {
 		go(url) {
 			this.$router.push(url)
@@ -43,17 +48,16 @@ export default {
 			this.geolocation = new BMap.Geolocation()
       this.geolocation.getCurrentPosition((res) => {
 				//因为百度地图定位不准确 这个地方暂时先注释掉
-				//this.center.lng = res.point.lng
-				//this.center.lat = res.point.lat
+				this.center.lng = res.point.lng
+				this.center.lat = res.point.lat
 				this.zoom = 14
       },{enableHighAccuracy: true})
-			
 			this.currentPoint = new BMap.Point(this.center.lng, this.center.lat)
-			this.$http.get('/api/static/data/shop.json').then((res) => {
-				this.targetPoint = new BMap.Point(parseFloat(res.data.shop[0].lng),parseFloat(res.data.shop[0].lat))
-				this.shops = res.data.shop
+			this.$http.post('/api/shop/reload',{openid: this.user.openid, lat: this.center.lat, lng: this.center.lng, maxDistance: '2000'}).then((res) => {
+				this.shops = res.data.data.nearShops
 				for(let shop of this.shops){
-					shop.point = new BMap.Point(parseFloat(shop.lng),parseFloat(shop.lat))
+					this.$set(shop,'show',false)
+					shop.point = new BMap.Point(parseFloat(shop.longitude),parseFloat(shop.latitude))
 					shop.distance = (map.getDistance(this.currentPoint, shop.point)).toFixed(2) + 'm'
 				}
 			})

@@ -30,8 +30,6 @@ export default {
     return {
       areaVisible: false,
       streetVisible: false,
-      area: '',
-      street: '',
       slots: [{
         flex: 1,
         values: province,
@@ -139,6 +137,7 @@ export default {
       }
 
       index1 = city.indexOf(two)
+			
       if (index1 >= 0 && city.length > 0) {
         area = data[index].childs[index1].childs.map(res => {
           return res.name
@@ -157,25 +156,15 @@ export default {
       if (index1 === -1 || index2 === -1) {
         this.street = '无可选街道'
       }
-      this.area = values.join(',')
+      this.user.area = values.join(',')
     },
     onStreeChange(picker, values) {
-      this.street = values.join(',')
+      this.user.street = values.join(',')
     },
 		/** 保存修改 **/
 		update() {
-			let address = {
-				area: this.area,
-				street: this.street
-			}
-			this.$http.get('/api/static/data/user/name.json',{params: {address: address}}).then((res) => {
-				Toast({
-					message: res.data.message,
-					duration: 2000
-				})
-				this.$store.dispatch('userShow')
-				this.init()
-			})
+			this.$store.dispatch('userEdit')
+			this.init()
 		}
   }
 }
