@@ -37,7 +37,6 @@
 				<dd>查看门店</dd>
 			</dl>
 		</div>
-		<mt-button size="large" type='default' class='logout'>退出登录</mt-button>
 	</div>
 </template>
 

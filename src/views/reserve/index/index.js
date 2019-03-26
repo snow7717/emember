@@ -40,19 +40,19 @@ export default {
 			this.$router.push(url)
 		},
 		bannerIndex() {
-			this.$http.post('/api/regist/activityPicture',{openid: this.user.openid}).then((res) => {
+			this.$http.post('/regist/activityPicture',{openid: this.user.openid}).then((res) => {
 				this.banners = res.data.data
 			})
 		},
 		shopIndex() {
-			this.$http.post('/api/regist/shopSearch',{openid: this.user.openid}).then((res) => {
+			this.$http.post('/regist/shopSearch',{openid: this.user.openid}).then((res) => {
 				for(let item of res.data.data){
 					this.shops.push(item.name)
 				}
 			})
 		},
 		doctorIndex() {
-			this.$http.post('/api/regist/doctorList',{name: '', openid: this.user.openid, shop: parseInt(this.$route.params.id)}).then((res) => {
+			this.$http.post('/regist/doctorList',{name: '', openid: this.user.openid, shop: parseInt(this.$route.params.id)}).then((res) => {
 				this.doctors = res.data.data
 			})
 		}

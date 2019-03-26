@@ -30,7 +30,7 @@ export default {
 		/** 发送手机验证码 **/
 		sendCode() {
 			this.countdown = 60
-			this.$http.post('/api/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
+			this.$http.post('/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
 				console.log(res)
 				Toast({
 					message: res.data.retmsg
@@ -50,7 +50,7 @@ export default {
 		},
 		/** 跳转进入下一页面 **/
 		nexter(){
-			this.$http.post('/api/member/unbind',{openid: this.user.openid, passcode: this.ecode}).then((res) => {
+			this.$http.post('/member/unbind',{openid: this.user.openid, passcode: this.ecode}).then((res) => {
 				if(res.data.retcode == '0'){
 					Toast({
 						message: res.data.retmsg

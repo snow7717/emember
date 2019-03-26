@@ -36,7 +36,7 @@ export default {
 		/** 发送手机验证码 **/
 		sendCode() {
 			this.countdown = 60
-			this.$http.post('/api/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
+			this.$http.post('/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
 				Toast({
 					message: res.data.retmsg
 				})
@@ -55,7 +55,7 @@ export default {
 		},
 		/** 更新手机号 **/
 		update() {
-			this.$http.post('/api/bindPhone',{phone: this.user.phone, passcode: this.ecode, openid: this.user.openid}).then((res) => {
+			this.$http.post('/bindPhone',{phone: this.user.phone, passcode: this.ecode, openid: this.user.openid}).then((res) => {
 				Toast({
 					message: res.data.retmsg,
 					duration: 1000

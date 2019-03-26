@@ -14,7 +14,7 @@ const getters = {
 // actions
 const actions = {
 	userShow(context) {
-		axios.post(`/api/member/info`,{openid: context.state.openid}).then((res) => {
+		axios.post(`/member/info`,{openid: context.state.openid}).then((res) => {
 			console.log(res)
 			if(res.data.retcode == '1'){
 				context.commit('userShow',res.data.data)
@@ -26,7 +26,7 @@ const actions = {
 		})
 	},
 	userEdit(context) {
-		axios.post('/api/member/save',context.state).then((res) => {
+		axios.post('/member/save',context.state).then((res) => {
 			if(res.data.retcode == '1'){
 				Toast({
 					message: '更新成功'

@@ -13,6 +13,7 @@ import '@/assets/css/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.use(MintUI)
+axios.defaults.baseURL = 'https://dzhy.ysk360.com/server/we'
 Vue.prototype.$http = axios
 
 /* eslint-disable no-new */

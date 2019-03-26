@@ -40,7 +40,7 @@ export default {
 		},
 		/** 获取消费列表 **/
 		index(page) {
-			this.$http.post('/api/member/consumeRecord',{pageNo: page, pageSize: this.page.pageSize, startDate: this.range.start, endDate: this.range.end,openid: this.user.openid}).then((res) => {
+			this.$http.post('/member/consumeRecord',{pageNo: page, pageSize: this.page.pageSize, startDate: this.range.start, endDate: this.range.end,openid: this.user.openid}).then((res) => {
 				this.consumptions = this.consumptions.concat(res.data.rows)
 				this.page.total = Math.ceil(res.data.total / this.page.pageSize)
 			})

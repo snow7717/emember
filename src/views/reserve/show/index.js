@@ -65,7 +65,7 @@ export default {
 		},
 		// 获取坐诊计划
 		index() {
-			this.$http.post('/api/regist/doctorDetailsCalendar',{id: this.$route.params.id}).then((res) => {
+			this.$http.post('/regist/doctorDetailsCalendar',{id: this.$route.params.id}).then((res) => {
 				for(let plan of res.data.data){
 					this.plans.push({
 						id: plan.id,
@@ -78,7 +78,7 @@ export default {
 			})
 		},
 		show() {
-			this.$http.post('/api/regist/doctorDetails',{id: this.$route.params.id}).then((res) => {
+			this.$http.post('/regist/doctorDetails',{id: this.$route.params.id}).then((res) => {
 				this.doctor = res.data.data
 			})
 		},
@@ -87,7 +87,7 @@ export default {
 				return item.date == this.form.booktime
 			})[0].id
 			this.form.schedule = id 
-			this.$http.post('/api/regist/makeAppointment',this.form).then((res) => {
+			this.$http.post('/regist/makeAppointment',this.form).then((res) => {
 				Toast({
 					message: res.data.retmsg
 				})

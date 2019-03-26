@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-			'/api': {
+			/*'/api': {
         target: 'https://dzhy.ysk360.com/server/we/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
         }
-      }
+      }*/
 		},
 
     // Various Dev Server settings

@@ -24,7 +24,7 @@ export default new Router({
       component: Auther
 		},
     {
-      path: '//:openid',
+      path: '/index/:openid',
       name: 'index',
       component: Index
     },

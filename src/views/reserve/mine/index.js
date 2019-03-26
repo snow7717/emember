@@ -22,9 +22,8 @@ export default {
 		},
 		/** 获取预约列表 **/
 		index() {
-			this.$http.post('/api/member/myrecord', {openid: this.user.openid}).then((res) => {
-				console.log(res)
-				this.reserves = this.reserves.concat(res.data.data.bookRecords)
+			this.$http.post('/member/myrecord', {openid: this.user.openid}).then((res) => {
+				this.reserves = res.data.data.bookRecords
 			})
 		}
 	}

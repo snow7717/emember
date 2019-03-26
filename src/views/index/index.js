@@ -31,7 +31,7 @@ export default {
 			this.$router.push(url)
 		},
 		index() {
-			this.$http.post('/api/member/load',{openid: this.$store.state.user.openid}).then((res) => {
+			this.$http.post('/member/load',{openid: this.$store.state.user.openid}).then((res) => {
 				if(res.data.retcode == '1'){
 				  this.member = res.data.data
 				}else{

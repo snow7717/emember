@@ -2,7 +2,7 @@ import Vue from 'vue'
 import BaiduMap from 'vue-baidu-map'
 
 Vue.use(BaiduMap, {
-  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.comconsole/key */
   ak: 'nnuFPzPy3rGg61UcHCGP4FAbw6tpWq91'
 })
 
@@ -53,7 +53,7 @@ export default {
 				this.zoom = 14
       },{enableHighAccuracy: true})
 			this.currentPoint = new BMap.Point(this.center.lng, this.center.lat)
-			this.$http.post('/api/shop/reload',{openid: this.user.openid, lat: this.center.lat, lng: this.center.lng, maxDistance: '2000'}).then((res) => {
+			this.$http.post('/shop/reload',{openid: this.user.openid, lat: this.center.lat, lng: this.center.lng, maxDistance: '2000'}).then((res) => {
 				this.shops = res.data.data.nearShops
 				for(let shop of this.shops){
 					this.$set(shop,'show',false)
