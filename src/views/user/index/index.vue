@@ -9,7 +9,7 @@
 		  <mt-cell title="性别" is-link v-bind:value="user.gender"></mt-cell>
 		</section>
 		<section v-on:click='openPicker'>
-		  <mt-cell title="生日" is-link v-bind:value="user.birthday"></mt-cell>
+		  <mt-cell title="生日" is-link v-bind:value="birthdayFormat"></mt-cell>
 		</section>
 		<mt-cell title="地址" to="/user/address" is-link v-bind:value="user.area + user.street">
 		</mt-cell>
@@ -18,7 +18,7 @@
 		<mt-popup v-model="genderVisible" position="bottom" class='w-100'>
 			<mt-radio v-model="user.gender" v-bind:options="['男', '女']"></mt-radio>
 		</mt-popup>
-		<mt-datetime-picker ref="picker" type="date" v-bind:startDate='startDate' v-on:confirm='update' v-model='user.birthday'></mt-datetime-picker>
+		<mt-datetime-picker ref="picker" type="date" v-bind:startDate='startDate' v-on:confirm='update' v-model='user.birthday' v-bind:value='user.birthday'></mt-datetime-picker>
 	</div>
 </template>
 

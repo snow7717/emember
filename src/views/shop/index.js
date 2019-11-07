@@ -11,8 +11,8 @@ export default {
 	data() {
 		return {
 			center: {
-				"lat": "36.6705283084", 
-			  "lng": "117.0138431770",
+				"lat": "", 
+			  "lng": "",
 			},
 			walkingShow: '',
       zoom: 3,
@@ -30,7 +30,8 @@ export default {
 		}
 	},
 	created() {
-		
+		this.$store.commit('userId',this.$route.params.openid)
+		this.$store.dispatch('userShow')
 	},
 	computed: {
 		user() {
@@ -46,21 +47,29 @@ export default {
 		},
     handler ({BMap, map}) {
 			this.geolocation = new BMap.Geolocation()
+			let _this = this
       this.geolocation.getCurrentPosition((res) => {
-				//因为百度地图定位不准确 这个地方暂时先注释掉
-				this.center.lng = res.point.lng
-				this.center.lat = res.point.lat
-				this.zoom = 14
+				var ggPoint = new BMap.Point(res.point.lng, res.point.lat)
+				var convertor = new BMap.Convertor()
+			  var pointArr = []
+				pointArr.push(ggPoint)
+				convertor.translate(pointArr, 1, 5, (data) => {
+					if(data.status === 0) {
+						_this.center.lng = data.points[0].lng
+						_this.center.lat = data.points[0].lat
+						_this.zoom = 14
+						_this.currentPoint = new BMap.Point(_this.center.lng, _this.center.lat)
+						_this.$http.post('/shop/reload',{openid: _this.user.openid, lat: _this.center.lat, lng: _this.center.lng, maxDistance: '20000'}).then((res) => {
+							_this.shops = res.data.data.nearShops
+							for(let shop of this.shops){
+								_this.$set(shop,'show',false)
+								shop.point = new BMap.Point(parseFloat(shop.longitude),parseFloat(shop.latitude))
+								shop.distance = (map.getDistance(_this.currentPoint, shop.point)).toFixed(0) + 'm'
+							}
+						})
+					}
+				})
       },{enableHighAccuracy: true})
-			this.currentPoint = new BMap.Point(this.center.lng, this.center.lat)
-			this.$http.post('/shop/reload',{openid: this.user.openid, lat: this.center.lat, lng: this.center.lng, maxDistance: '2000'}).then((res) => {
-				this.shops = res.data.data.nearShops
-				for(let shop of this.shops){
-					this.$set(shop,'show',false)
-					shop.point = new BMap.Point(parseFloat(shop.longitude),parseFloat(shop.latitude))
-					shop.distance = (map.getDistance(this.currentPoint, shop.point)).toFixed(2) + 'm'
-				}
-			})
     },
 		handleInfoWindowOpen(item){
 			item.show = true

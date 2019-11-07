@@ -52,7 +52,7 @@ export default {
 			})
 		},
 		doctorIndex() {
-			this.$http.post('/regist/doctorList',{name: '', openid: this.user.openid, shop: parseInt(this.$route.params.id)}).then((res) => {
+			this.$http.post('/regist/doctorList',{name: '', openid: this.user.openid, /*shop: parseInt(this.$route.params.id)*/}).then((res) => {
 				this.doctors = res.data.data
 			})
 		}

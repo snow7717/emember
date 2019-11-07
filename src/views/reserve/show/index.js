@@ -8,6 +8,10 @@ export default {
 		return {
 		  doctor: {},
       plans: [],
+			shop: '',
+			address: '',
+			start_at: '',
+			end_at: '',
 			form: {
 				openid: this.$store.state.user.openid,
 				schedule: '',
@@ -45,14 +49,14 @@ export default {
 		user() {
 			return this.$store.state.user
 		},
-		phoneVerify() {
+		/*phoneVerify() {
 			return /^1[34578]\d{9}$/.test(this.form.phone) ? true : false
-		},
+		},*/
 		ageVerify() {
 			return /^\d+(?=\.{0,1}\d+$|$)/.test(this.form.age) ? true : false
 		},
 		submitAble() {
-			return this.reserveText == '可以预约' && this.form.name != '' && this.phoneVerify && this.ageVerify && this.form.intro != '' ? true : false
+			return this.reserveText == '可以预约' && this.form.name != '' && this.ageVerify && this.form.intro != '' ? true : false
 		}
 	},
 	created() {
@@ -66,12 +70,17 @@ export default {
 		// 获取坐诊计划
 		index() {
 			this.$http.post('/regist/doctorDetailsCalendar',{id: this.$route.params.id}).then((res) => {
+				console.log(res)
 				for(let plan of res.data.data){
 					this.plans.push({
 						id: plan.id,
 						date: plan.date,
+						start_at: plan.startTime,
+						end_at: plan.endTime,
 						expected: plan.limited,
 						appointed: plan.number,
+						shop: plan.name,
+						address: plan.address,
 						className: parseInt(plan.limited) > parseInt(plan.number) ? 'not-full' : 'full'
 					})
 				}
@@ -98,6 +107,13 @@ export default {
 		},
 		clickDay(day) {
 			this.form.booktime = day
+		  let plan = this.plans.filter((item) => {
+				return item.date == day
+			})[0]
+			this.shop = plan.shop
+			this.address = plan.address
+			this.start_at = plan.start_at
+			this.end_at = plan.end_at
     },
 	},
 	components: {

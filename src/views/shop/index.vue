@@ -26,9 +26,9 @@
 		</baidu-map>
 		<br>
 		<div v-for='(item,index) in shops' v-bind:key='index' v-on:click='handleInfoWindowOpen(item)' >
-		  <mt-cell v-bind:title="item.name" v-bind:label="item.address + ' （距离：' + item.distance + '）'"  class='f-csp' v-bind:class='item.active ? "active" : ""'>
+		  <mt-cell v-bind:title="item.name" v-bind:label="item.address + '（' + item.distance + '）'"  class='f-csp' v-bind:class='item.active ? "active" : ""'>
 		    <mt-button type="default" size='small' v-on:click.stop='go(`/reserve/${user.openid}/${item.id}`)'>预约</mt-button>
-			  <mt-button type="primary" size='small' v-on:click.stop='gofor(index)'>去这里</mt-button>
+			  <mt-button type="primary" size='small' v-on:click.stop='gofor(index)'>路线</mt-button>
 		  </mt-cell>
 		</div>
 	</div>	

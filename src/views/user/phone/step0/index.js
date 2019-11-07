@@ -4,7 +4,7 @@ export default {
 	data() {
 		return {
 			ecode: '',
-			countdown: 0,
+			countdown: 0
 		}
 	},
 	components: {
@@ -31,7 +31,6 @@ export default {
 		sendCode() {
 			this.countdown = 60
 			this.$http.post('/sendSms',{phone: this.user.phone,openid: this.user.openid}).then((res) => {
-				console.log(res)
 				Toast({
 					message: res.data.retmsg
 				})

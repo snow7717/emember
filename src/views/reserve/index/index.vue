@@ -31,7 +31,7 @@
 					<mt-button type="primary" size='small' class='f-fr' v-on:click='go(`/reserve/show/${item.id}`)'>预约</mt-button>
 				</header>
 				<p class='doctor-level f-fwb'>{{item.title}}</p>
-				<p class='f-fs1'>{{item.shopName}}</p>
+				<p class='f-fs1'>{{item.hospital}}</p>
 				<dl class='f-fs1'>
 					<dt class='f-ib'>诊疗费</dt>
 					<dd class='f-ib'>{{item.fee}}</dd>

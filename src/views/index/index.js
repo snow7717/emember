@@ -16,8 +16,7 @@ export default {
 		}
 	},
 	created() {
-		this.$store.commit('userId',this.$route.params.openid)
-		this.$store.dispatch('userShow')
+		this.userInit()
 		this.index()
 	},
 	computed: {
@@ -29,6 +28,20 @@ export default {
 		/** 页面跳转 **/
 		go(url) {
 			this.$router.push(url)
+		},
+		userInit() {
+			this.$store.commit('userId',this.$route.params.openid)
+	  	this.$store.dispatch('userShow')
+	  	if(this.user.phone == ''){
+				Toast({
+					message: '您还未绑定手机号，请先绑定手机号',
+					position: 'bottom',
+					duration: 5000
+				})
+				setTimeout(() => {
+					this.$router.push('/user/phone')
+				},2000)
+			}
 		},
 		index() {
 			this.$http.post('/member/load',{openid: this.$store.state.user.openid}).then((res) => {

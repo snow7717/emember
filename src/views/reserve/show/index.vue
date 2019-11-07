@@ -27,7 +27,8 @@
 			</div>
 		</div>
 		<calendar ref="Calendar" v-bind:markDateMore="plans" v-on:choseDay="clickDay" class='mt-10'></calendar>
-		<mt-cell v-bind:title="form.booktime" v-bind:value="reserveText">
+		<mt-cell v-bind:title="shop" v-bind:value="address"></mt-cell>
+		<mt-cell v-bind:title="form.booktime + ' ' + start_at + ' -' + end_at" v-bind:value="reserveText">
 		</mt-cell>
 		<mt-field label="姓名" v-model="form.name" v-bind:state="form.name == '' ? 'error' : 'success'"></mt-field>
 		<section v-on:click='genderVisible = true'>

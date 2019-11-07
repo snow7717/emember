@@ -10,7 +10,7 @@ export default {
 				this.$route.params.appId,
 				this.$route.params.pageId
 			]      
-			window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=http%3A%2F%2Fdzhy.ysk360.com%2Fserver%2Fwe%2Fauth%2F'+comid+'&response_type=code&scope=snsapi_userinfo&state='+pageid+'#wechat_redirect'
+			window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=http%3A%2F%2Fdzhy.ysk360.com%2Fserver%2Fwe%2Fauth%2F'+comid+'&response_type=code&scope=snsapi_userinfo&state='+pageid+'#wechat_redirect'
     }
   },
 	created() {

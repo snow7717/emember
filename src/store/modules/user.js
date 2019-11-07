@@ -15,7 +15,6 @@ const getters = {
 const actions = {
 	userShow(context) {
 		axios.post(`/member/info`,{openid: context.state.openid}).then((res) => {
-			console.log(res)
 			if(res.data.retcode == '1'){
 				context.commit('userShow',res.data.data)
 			}else{

@@ -44,7 +44,7 @@ export default new Router({
       component: UserPhone
     },
 		{
-      path: '/user/phone1',
+      path: '/user/phone1/:openid',
       name: 'userPhone1',
       component: UserPhone1
     },
